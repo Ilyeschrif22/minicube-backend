@@ -15,9 +15,12 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/category/:category', async (req, res) => {
+router.get('/category', async (req, res) => {
     try {
-        const category = req.params.category;
+        const category = req.query.category;
+        if (!category) {
+            return res.status(400).json({ message: "Category query parameter is required" });
+        }
         const projects = await Project.find({ category: category });
         res.json(projects);
     } catch (err) {

@@ -11,7 +11,6 @@ app.use(express.json());
 
 const projectsRouter = require('./routes/projects');
 
-app.use(express.json());
 app.use('/api/projects', projectsRouter);
 
 module.exports = app;
